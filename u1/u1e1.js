@@ -43,7 +43,7 @@ class InventoryManager {
 
     validateProduct(product) {
         const code = product.code
-        if (!this.isValidFormat(product)) {
+        if (!this.#isValidFormat(product)) {
             throw new Error(`ERROR_DATA. Alguna de les dades del producte (${code}) no té un format vàlid.`)
         }
         if (!this.#isValidCode(code)) {
@@ -64,7 +64,7 @@ class InventoryManager {
         return true;
     }
 
-    isValidFormat(product) {
+    #isValidFormat(product) {
         if (!(typeof product.code === 'number' 
             && Number.isInteger(product.code) 
             && product.code >= 0)) {
